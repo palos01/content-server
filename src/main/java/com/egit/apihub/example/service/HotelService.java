@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /*
  * Sample service to demonstrate what the API would use to get things done
  */
@@ -55,5 +57,9 @@ public class HotelService {
             counterService.increment("EGITs.HotelService.getAll.largePayload");
         }
         return pageOfHotels;
+    }
+
+    public List<Hotel> getHotelsByCity(String city) {
+        return hotelRepository.findByCity(city);
     }
 }

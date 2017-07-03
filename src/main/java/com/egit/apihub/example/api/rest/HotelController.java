@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 /*
  * Demonstrates how to set up RESTful API endpoints using Spring MVC
@@ -52,6 +53,23 @@ public class HotelController extends AbstractRestHandler {
                                       HttpServletRequest request, HttpServletResponse response) {
         return this.hotelService.getAllHotels(page, size);
     }
+
+    @RequestMapping(value = "/city/{city}",
+            method = RequestMethod.GET,
+            produces = {"application/json", "application/xml"})
+    @ResponseStatus(HttpStatus.OK)
+    @ApiOperation(value = "Get a single hotel.", notes = "You have to provide a valid city name.")
+    public
+    @ResponseBody
+    List<Hotel> getHotelsByCity(@ApiParam(value = "Name of the city.", required = true)
+                   @PathVariable("city") String city,
+                   HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Hotel> hotels = this.hotelService.getHotelsByCity(city);
+        checkResourceFound(hotels);
+        //todo: http://goo.gl/6iNAkz
+        return hotels;
+    }
+
 
     @RequestMapping(value = "/{id}",
             method = RequestMethod.GET,
