@@ -21,12 +21,12 @@ Once the application runs you should see something like this
 
 ```
 2014-10-04 18:24:58.870  INFO 10190 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8090/http
-2014-10-04 18:24:58.872  INFO 10190 --- [           main] com.khoubyari.example.Application        : Started Application in 6.764 seconds (JVM running for 7.06)
+2014-10-04 18:24:58.872  INFO 10190 --- [           main] Application        : Started Application in 6.764 seconds (JVM running for 7.06)
 ```
 
 ## About the Service
 
-The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.khoubyari.example.api.rest.hotelController``` on **port 8090**. (see below)
+The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.egit.apihub.example.api.rest.hotelController``` on **port 8090**. (see below)
 
 More interestingly, you can start calling some of the operational endpoints (see full list below) like ```/metrics``` and ```/health``` (these are available on **port 8091**)
 
@@ -175,7 +175,7 @@ mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,se
 ```
 and then you can connect to it remotely using your IDE. For example, from IntelliJ You have to add remote debug configuration: Edit configuration -> Remote.
 
-# Questions and Comments: khoubyari@gmail.com
+# Questions and Comments: pvybiral@gmail.com
 
 
 

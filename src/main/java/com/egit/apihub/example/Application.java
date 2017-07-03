@@ -1,4 +1,4 @@
-package com.khoubyari.example;
+package com.egit.apihub.example;
 
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import org.slf4j.Logger;
@@ -15,8 +15,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  */
 
 @EnableAutoConfiguration  // Sprint Boot Auto Configuration
-@ComponentScan(basePackages = "com.khoubyari.example")
-@EnableJpaRepositories("com.khoubyari.example.dao.jpa") // To segregate MongoDB and JPA repositories. Otherwise not needed.
+@ComponentScan(basePackages = "com.egit.apihub.example")
+@EnableJpaRepositories("com.egit.apihub.example.dao.jpa") // To segregate MongoDB and JPA repositories. Otherwise not needed.
 @EnableSwagger // auto generation of API docs
 public class Application extends SpringBootServletInitializer {
 

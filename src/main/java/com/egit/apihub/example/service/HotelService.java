@@ -1,7 +1,7 @@
-package com.khoubyari.example.service;
+package com.egit.apihub.example.service;
 
-import com.khoubyari.example.domain.Hotel;
-import com.khoubyari.example.dao.jpa.HotelRepository;
+import com.egit.apihub.example.dao.jpa.HotelRepository;
+import com.egit.apihub.example.domain.Hotel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +52,7 @@ public class HotelService {
         Page pageOfHotels = hotelRepository.findAll(new PageRequest(page, size));
         // example of adding to the /metrics
         if (size > 50) {
-            counterService.increment("Khoubyari.HotelService.getAll.largePayload");
+            counterService.increment("EGITs.HotelService.getAll.largePayload");
         }
         return pageOfHotels;
     }

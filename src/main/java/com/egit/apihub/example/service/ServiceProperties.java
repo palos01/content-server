@@ -1,4 +1,4 @@
-package com.khoubyari.example.service;
+package com.egit.apihub.example.service;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

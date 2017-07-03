@@ -1,4 +1,4 @@
-package com.khoubyari.example;
+package com.egit.apihub.example;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RestControllerAspect {
 
-    @Before("execution(public * com.khoubyari.example.api.rest.*Controller.*(..))")
+    @Before("execution(public * com.egit.apihub.example.api.rest.*Controller.*(..))")
     public void logBeforeRestCall(JoinPoint pjp) throws Throwable {
         System.out.println(":::::AOP Before REST call:::::" + pjp);
     }

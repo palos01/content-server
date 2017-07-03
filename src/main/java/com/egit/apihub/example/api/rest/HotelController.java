@@ -1,8 +1,8 @@
-package com.khoubyari.example.api.rest;
+package com.egit.apihub.example.api.rest;
 
-import com.khoubyari.example.domain.Hotel;
-import com.khoubyari.example.exception.DataFormatException;
-import com.khoubyari.example.service.HotelService;
+import com.egit.apihub.example.domain.Hotel;
+import com.egit.apihub.example.exception.DataFormatException;
+import com.egit.apihub.example.service.HotelService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

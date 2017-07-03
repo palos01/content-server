@@ -1,4 +1,4 @@
-package com.khoubyari.example.api.rest.docs;
+package com.egit.apihub.example.api.rest.docs;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
 import com.mangofactory.swagger.models.dto.ApiInfo;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableSwagger
-@ComponentScan("com.khoubyari.example.api.rest")
+@ComponentScan("com.egit.apihub.example.api.rest")
 public class SwaggerConfig {
 
     public static final String DEFAULT_INCLUDE_PATTERNS = "/example/.*";
@@ -36,7 +36,7 @@ public class SwaggerConfig {
                 "Spring Boot Sample REST APIs",
                 "The APIs here demonstrate creating a 'production-ready' service built with Spring Boot and other helpful libraries",
                 "http://opensource.org/licenses/MIT",
-                "khoubyari@gmail.com",
+                "apihub@egit.com",
                 "MIT",
                 "http://opensource.org/licenses/MIT"
         );
