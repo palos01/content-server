@@ -9,6 +9,22 @@ spring.datasource:
     driverClassName: org.h2.Driver
     url: jdbc:h2:mem:bootexample;MODE=MySQL
 
+spring:
+  profiles: postSQL
+
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://172.17.0.1:5432/test
+    username: paja
+    password: cer115
+
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: update # todo: in non-dev environments, comment this out:
+
+
+
 server:
   port: 8090
 
