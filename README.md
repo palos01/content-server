@@ -26,7 +26,7 @@ Once the application runs you should see something like this
 
 ## About the Service
 
-The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like MySQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.egit.apihub.example.api.rest.hotelController``` on **port 8090**. (see below)
+The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like PostgreSQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.egit.apihub.example.api.rest.hotelController``` on **port 8090**. (see below)
 
 More interestingly, you can start calling some of the operational endpoints (see full list below) like ```/metrics``` and ```/health``` (these are available on **port 8091**)
 
@@ -120,19 +120,21 @@ Spring Boot is an "opinionated" application bootstrapping framework that makes i
 **/trace** Displays trace information (by default the last few HTTP requests).
 
 
-# Running the project with MySQL
+# Running the project with PostgreSQL
 
-This project uses an in-memory database so that you don't have to install a database in order to run it. However, converting it to run with another relational database such as MySQL or PostgreSQL is very easy. Since the project uses Spring Data and the Repository pattern, it's even fairly easy to back the same service with MongoDB. 
+This project uses an in-memory database so that you don't have to install a database in order to run it. However, converting it to run with another relational database such as PostgreSQL or PostgreSQL is very easy. Since the project uses Spring Data and the Repository pattern, it's even fairly easy to back the same service with MongoDB. 
 
-Here is what you would do to back the services with MySQL, for example: 
+Here is what you would do to back the services with PostreSQL, for example: 
 
 ### In pom.xml add: 
 
 ```
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.1.1</version>
         </dependency>
+
 ```
 
 ### Append this to the end of application.yml: 
@@ -140,30 +142,27 @@ Here is what you would do to back the services with MySQL, for example:
 ```
 ---
 spring:
-  profiles: mysql
+  profiles: postSQL
 
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://<your_mysql_host_or_ip>/bootexample
-    username: <your_mysql_username>
-    password: <your_mysql_password>
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://<your_posgresql_host_or_ip>:<port>/<db>
+    username: <user>
+    password: <password>
 
   jpa:
     hibernate:
-      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      dialect: org.hibernate.dialect.PostgreSQLDialect
       ddl-auto: update # todo: in non-dev environments, comment this out:
 
-
-hotel.service:
-  name: 'test profile:'
 ```
 
-### Then run is using the 'mysql' profile:
+### Then run is using the 'postSQL' profile:
 
 ```
-        java -jar -Dspring.profiles.active=mysql target/spring-boot-rest-example-0.2.0.war
+        java -jar -Dspring.profiles.active=postSQL target/spring-boot-rest-example-0.4.0.jar
 or
-        mvn spring-boot:run -Drun.arguments="spring.profiles.active=mysql"
+        mvn spring-boot:run -Drun.arguments="spring.profiles.active=postSQL"
 ```
 
 # Attaching to the app remotely from your IDE
@@ -176,8 +175,3 @@ mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,se
 and then you can connect to it remotely using your IDE. For example, from IntelliJ You have to add remote debug configuration: Edit configuration -> Remote.
 
 # Questions and Comments: pvybiral@gmail.com
-
-
-
-
-
