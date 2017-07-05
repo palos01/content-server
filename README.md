@@ -136,10 +136,7 @@ Here is what you would do to back the services with PostreSQL, for example:
 </dependency>
 
 ```
-
 ### Append this to the end of application.yml: 
-
-
 ```
 spring:
   profiles: postSQL
@@ -156,19 +153,15 @@ spring:
       ddl-auto: update # todo: in non-dev environments, comment this out:
 
 ```
-
 ### Then run is using the 'postSQL' profile:
-
 ```
         java -jar -Dspring.profiles.active=postSQL target/spring-boot-rest-example-0.4.0.jar
 or
         mvn spring-boot:run -Drun.arguments="spring.profiles.active=postSQL"
 ```
-
 # Attaching to the app remotely from your IDE
 
 Run the service with these command line options:
-
 ```
 mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 ```
@@ -179,14 +172,12 @@ To prepare the docker image execute
 ```
 mvn package docker:build 
 ```
-
-##To run docker container 
+## To run docker container 
 
 ### Store data in memory
 ```
 sudo docker run -d -p 8090:8090 -p 8091:8091 --name spring-boot-example-inmem springboot/spring-boot-rest-example
 ```
-
 ### Store data in PostgreSQL
 ```
 sudo docker run -d -p 8090:8090 -p 8091:8091 -e SPRING_PROFILE=postSQL -e POSTSQL_URL="jdbc:postgresql://<host>:<port>/<database>?user=<user>&password=<password>" --name spring-boot-example-postSQL springboot/spring-boot-rest-example
