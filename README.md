@@ -183,4 +183,4 @@ sudo docker run -d -p 8090:8090 -p 8091:8091 --name spring-boot-example-inmem sp
 sudo docker run -d -p 8090:8090 -p 8091:8091 -e SPRING_PROFILE=postSQL -e POSTSQL_URL="jdbc:postgresql://<host>:<port>/<database>?user=<user>&password=<password>" --name spring-boot-example-postSQL springboot/spring-boot-rest-example
 ```
 
-### Questions and Comments: pvybiral@gmail.com
+### Questions and Comments: vybiral@gmail.com
