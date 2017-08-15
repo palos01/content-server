@@ -30,7 +30,7 @@ public class EnvironmentController extends AbstractRestHandler {
             method = RequestMethod.GET,
             produces = {"application/json", "application/xml"})
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Get a single hotel.", notes = "You have to provide a valid city name.")
+    @ApiOperation(value = "Get env properties", notes = "System and custom properties are returned.")
     public
     @ResponseBody
     Map getStatus(HttpServletRequest request, HttpServletResponse response) throws Exception {
