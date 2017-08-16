@@ -1,5 +1,6 @@
 package com.egit.apihub.example.service;
 
+import com.egit.apihub.example.Application;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ public class ServiceProperties {
 
     private Map<String, String> systemProperties = new HashMap<>();
 	private Map<String, String> customProperties = new HashMap<>();
+	private Map<String, String> envProperties = new HashMap<>();
 
 	public String getName() {
 		return this.name;
@@ -34,22 +36,30 @@ public class ServiceProperties {
 
 	public Map<String, String> getSystemProperties() {
 		if(systemProperties.isEmpty()) {
-			this.systemProperties.putAll(System.getenv());
+			this.systemProperties.putAll(propsToMap(System.getProperties()));
 		}
 		return this.systemProperties;
+	}
+
+	public Map<String, String> getEnvProperties() {
+		if(envProperties.isEmpty()) {
+			this.envProperties.putAll(System.getenv());
+		}
+		return this.envProperties;
 	}
 
 	public Map<String, String> getCustomProperties() {
 		if(customProperties.isEmpty()) {
 			try {
 				Properties props = new Properties();
-				props.load(new FileReader("/opt/app/etc/props/app.properties"));
 
-				Enumeration enProps = props.propertyNames();
-				while(enProps.hasMoreElements()) {
-					String key = (String) enProps.nextElement();
-					this.customProperties.put(key, props.getProperty(key));
+				if(Application.isDockerEnv()) {
+					props.load(new FileReader("/opt/app/etc/props/app.properties"));
+				} else {
+					props.load(new FileReader("/home/palos/projects/spring-boot-rest-example-config/environment/secrets/microd-all-props/app.properties"));
 				}
+
+				this.customProperties = propsToMap(props);
 
 			} catch (Exception e) {
 				this.customProperties.put("CUSTOM_PROPERTIS_NOT_AVAILABLE", e.getMessage());
@@ -59,10 +69,21 @@ public class ServiceProperties {
 		return this.customProperties;
 	}
 
+	private static Map<String, String> propsToMap(Properties props) {
+		Map<String, String> result = new HashMap<>();
+		Enumeration enProps = props.propertyNames();
+		while(enProps.hasMoreElements()) {
+			String key = (String) enProps.nextElement();
+			result.put(key, props.getProperty(key));
+		}
+		return result;
+	}
+
 	public Map<String, Object> getOverallStatus() {
 		Map<String, Object> status = new HashMap<>();
 		status.put("customProperties", this.getCustomProperties());
 		status.put("systemProperties", this.getSystemProperties());
+		status.put("envProperties", this.getEnvProperties());
 		return status;
 	}
 

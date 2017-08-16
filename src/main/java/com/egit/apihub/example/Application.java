@@ -27,6 +27,10 @@ public class Application extends SpringBootServletInitializer {
 	    SpringApplication.run(applicationClass, args);
 	}
 
+	public static boolean isDockerEnv() {
+	    return "docker".equalsIgnoreCase(System.getenv("container"));
+    }
+
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(applicationClass);
