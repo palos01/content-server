@@ -1,6 +1,7 @@
 package com.egit.apihub.example.service;
 
 
+import com.egit.apihub.example.config.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
@@ -16,12 +17,15 @@ public class HotelServiceHealth implements HealthIndicator {
     @Autowired
     private ServiceProperties configuration;
 
+    @Autowired
+    private AppConfig appConfig;
+
     // extend this to create an application-specific health check according to http://goo.gl/vt8I7O
     @Override
     public Health health() {
         return Health.up().withDetail("details", "{ 'internals' : 'getting close to limit', 'profile' : '" + this.configuration.getName() + "' }")
                 .withDetail("systemProperties", configuration.getSystemProperties())
-                .withDetail("customProperties", configuration.getCustomProperties())
+                .withDetail("customProperties", appConfig)
                 .status("itsok!").build();
     }
 
