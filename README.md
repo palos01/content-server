@@ -26,7 +26,7 @@ Once the application runs you should see something like this
 
 ## About the Service
 
-The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like PostgreSQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```com.egit.apihub.example.api.rest.hotelController``` on **port 8090**. (see below)
+The service is just a simple hotel review REST service. It uses an in-memory database to store the data. You can also do with a relational database like PostgreSQL or PostgreSQL. If your database connection properties work, you can call some REST endpoints defined in ```ai.dnai.cs.api.rest.hotelController``` on **port 8090**. (see below)
 
 More interestingly, you can start calling some of the operational endpoints (see full list below) like ```/metrics``` and ```/health``` (these are available on **port 8091**)
 
@@ -63,7 +63,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-"name" : "Beds R Us",
+"imageName" : "Beds R Us",
 "description" : "Very basic, small rooms but clean",
 "city" : "Santa Ana",
 "rating" : 2
@@ -90,7 +90,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-"name" : "Beds R Us",
+"imageName" : "Beds R Us",
 "description" : "Very basic, small rooms but clean",
 "city" : "Santa Ana",
 "rating" : 3
@@ -176,11 +176,11 @@ mvn package docker:build
 
 ### Store data in memory
 ```
-sudo docker run -d -p 8090:8090 -p 8091:8091 --name spring-boot-example-inmem springboot/spring-boot-rest-example
+sudo docker run -d -p 8090:8090 -p 8091:8091 --imageName spring-boot-example-inmem springboot/spring-boot-rest-example
 ```
 ### Store data in PostgreSQL
 ```
-sudo docker run -d -p 8090:8090 -p 8091:8091 -e SPRING_PROFILE=postSQL -e POSTSQL_URL="jdbc:postgresql://<host>:<port>/<database>?user=<user>&password=<password>" --name spring-boot-example-postSQL springboot/spring-boot-rest-example
+sudo docker run -d -p 8090:8090 -p 8091:8091 -e SPRING_PROFILE=postSQL -e POSTSQL_URL="jdbc:postgresql://<host>:<port>/<database>?user=<user>&password=<password>" --imageName spring-boot-example-postSQL springboot/spring-boot-rest-example
 ```
 
 ### Questions and Comments: vybiral@gmail.com

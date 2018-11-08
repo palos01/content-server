@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.egit</groupId>
-    <artifactId>spring-boot-rest-example</artifactId>
+    <groupId>ai.dnai</groupId>
+    <artifactId>content-server</artifactId>
     <version>0.4.0</version>
     <packaging>jar</packaging>
-    <description>Example project demonstrating REST APIs implemented using Spring Boot, in-memory database, embedded Tomcat, Swagger, JsonPath, Hamcrest and MockMVC</description>
+    <description>Content server for Visual Inspection project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -16,7 +16,7 @@
     </parent>
 
     <properties>
-        <start-class>com.egit.apihub.example.Application</start-class>
+        <start-class>ai.dnai.cs.Application</start-class>
         <docker.image.prefix>springboot</docker.image.prefix>
     </properties>
 
@@ -94,12 +94,6 @@
             <groupId>org.hsqldb</groupId>
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.1.1</version>
         </dependency>
 
 

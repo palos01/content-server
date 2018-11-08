@@ -1,0 +1,13 @@
+{
+"image": {
+    "path": "$path"
+    "name":"$name",
+    "height": $height,
+    "width": $width,
+    "l2User": "USER1",
+  },
+  "layer": {
+    "aiLayer": {},
+    "userLayer": {}
+  }
+}
